@@ -14,11 +14,21 @@ class Quiz extends Component {
     randomNumber(min,max){
         return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
+    generateRandomOptions(sum){
+     let result=sum;
+     let resultsArray=[];
+
+
+
+
+     return resultsArray;
+    }
     playGame(){
         
         let field1=this.randomNumber(20,50);
         let field2=this.randomNumber(20,50);
         let result=field1 + field2;
+        let resultsArray=this.generateRandomOptions(result);
         let riddle={
         resultsArray: [8,9,10,11],
         field1: field1,
