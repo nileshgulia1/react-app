@@ -45,8 +45,13 @@ class Quiz extends Component {
 
      return resultsArray;
     }
-    checkResults(){
-        console.log('checkResults called');
+    checkResults(options){
+        console.log('checkResults called' + options);
+        if(this.state.riddle.answer===options){
+            console.log('correct answer');
+        }else{
+            console.log('wrong answer');
+        }
 
 
     }
@@ -72,7 +77,7 @@ class Quiz extends Component {
         return (
             <div className="options">
             {this.state.riddle.resultsArray.map((option,i) => 
-                <QuizOptions options={option} key={i} checkResults={this.checkResults}/>
+                <QuizOptions options={option} key={i} checkResults={(options) =>  this.checkResults(options)}/>
             )}
             
            </div>
