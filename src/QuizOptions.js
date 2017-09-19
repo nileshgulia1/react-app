@@ -10,11 +10,11 @@ class QuizOptions extends Component{
 
     }
     callParentCheckOptions(){
-        this.props.checkResults;
+        this.props.checkResults();
     }
     render(){
         return (
-            <div className="fields" onClick={this.callParentCheckOptions()}><div className="field-block">{this.props.options}</div></div>
+            <div className="fields" onClick={this.callParentCheckOptions}><div className="field-block">{this.props.options}</div></div>
             
         );
     }

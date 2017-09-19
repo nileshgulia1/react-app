@@ -72,7 +72,7 @@ class Quiz extends Component {
         return (
             <div className="options">
             {this.state.riddle.resultsArray.map((option,i) => 
-                <QuizOptions options={option} key={i} checkResults={this.checkResults()}/>
+                <QuizOptions options={option} key={i} checkResults={this.checkResults}/>
             )}
             
            </div>
