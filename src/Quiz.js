@@ -9,6 +9,7 @@ class Quiz extends Component {
             
         this.state={riddle};
         this.renderOptions=this.renderOptions.bind(this);
+        this.checkResults=this.checkResults.bind(this);
         
     }
     randomNumber(min,max){
@@ -44,6 +45,11 @@ class Quiz extends Component {
 
      return resultsArray;
     }
+    checkResults(){
+        console.log('checkResults called');
+
+
+    }
     playGame(){
         
         let field1=this.randomNumber(20,50);
@@ -66,7 +72,7 @@ class Quiz extends Component {
         return (
             <div className="options">
             {this.state.riddle.resultsArray.map((option,i) => 
-                <QuizOptions options={option} key={i} />
+                <QuizOptions options={option} key={i} checkResults={this.checkResults()}/>
             )}
             
            </div>
