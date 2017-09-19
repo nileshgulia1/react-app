@@ -6,8 +6,10 @@ class Quiz extends Component {
     constructor(props) {
         super(props);
         let riddle=this.playGame();
+        let correct=false;
+        let gameOver=false;
             
-        this.state={riddle};
+        this.state={riddle , correct, gameOver};
         this.renderOptions=this.renderOptions.bind(this);
         this.checkResults=this.checkResults.bind(this);
         
@@ -49,8 +51,10 @@ class Quiz extends Component {
         console.log('checkResults called' + options);
         if(this.state.riddle.answer===options){
             console.log('correct answer');
+            this.setState({correct:true , gameOver:true});
         }else{
             console.log('wrong answer');
+            this.setState({correct:false , gameOver:true});
         }
 
 
@@ -92,6 +96,8 @@ class Quiz extends Component {
               {this.renderOptions()}
               
              </div>
+             correct:{this.state.correct ? "True" : "False"}<br />
+             gameOver:{this.state.gameOver  ? "True" : "False"}
                
               
              
