@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import QuizOptions from './QuizOptions';
+import classNames from 'classnames';
 
 
 class Quiz extends Component {
@@ -12,6 +13,7 @@ class Quiz extends Component {
         this.state={riddle , correct, gameOver};
         this.renderOptions=this.renderOptions.bind(this);
         this.checkResults=this.checkResults.bind(this);
+        this.play=this.play.bind(this);
         
     }
     randomNumber(min,max){
@@ -75,8 +77,11 @@ class Quiz extends Component {
         answer: result
     };
     console.log(riddle);
+    if(this.state && this.state.gameOver){
+        this.setState({riddle:riddle});
+    }else{
         return riddle;
-    }
+    }}
     renderOptions(){
         return (
             <div className="options">
@@ -88,6 +93,21 @@ class Quiz extends Component {
 
         );
     }
+    renderMessage(){
+        if(this.state.correct){
+            return <h3>good job!!hit the button to play again.</h3>
+        }else{
+            <h3>oh ohhhh!!hit the button to play again.</h3>
+        }
+
+
+
+    }
+    play(){
+        this.setState({correct:false,
+            gameOver:false});
+        this.playGame();
+    }
     render(){
         return(
             <div className="quiz">
@@ -98,11 +118,13 @@ class Quiz extends Component {
              </div>
              correct:{this.state.correct ? "True" : "False"}<br />
              gameOver:{this.state.gameOver  ? "True" : "False"}
-               
+               <div className={classNames("after",{"hide": !this.state.gameOver},{"wrong" :!this.state.correct},{"correct":this.state.correct})}>
+               {this.renderMessage()}
+               </div>
               
              
              <div className="play-again">
-             <a className="button">Play again</a>
+             <a className="button" onClick={this.play}>Play again</a>
              
              
              </div>

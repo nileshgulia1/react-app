@@ -52,6 +52,9 @@
   align-items: stretch;
   flex: 1;
 }
+.hide{
+  display: none;
+}
 
 .field-block {
   display: flex;
